@@ -117,6 +117,10 @@ pwm:	pwm.o
 	$Q echo [link]
 	$Q $(CC) -o $@ pwm.o $(LDFLAGS) $(LDLIBS)
 
+asusPwm:	asusPwm.o
+	$Q echo [link]
+	$Q $(CC) -o $@ asusPwm.o $(LDFLAGS) $(LDLIBS)
+
 softPwm:	softPwm.o
 	$Q echo [link]
 	$Q $(CC) -o $@ softPwm.o $(LDFLAGS) $(LDLIBS)

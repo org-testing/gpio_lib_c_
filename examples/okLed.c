@@ -39,9 +39,9 @@
 #include <wiringPi.h>
 #include <softPwm.h>
 
-// The OK/Act LED is connected to BCM_GPIO pin 16
+// The OK/Act LED is connected to GPIO1_D0
 
-#define OK_LED  16
+#define OK_LED  48
 
 int main ()
 {
@@ -51,7 +51,7 @@ int main ()
 
 // Change the trigger on the OK/Act LED to "none"
 
-  if ((fd = open ("/sys/class/leds/led0/trigger", O_RDWR)) < 0)
+  if ((fd = open ("/sys/class/leds/act-led/trigger", O_RDWR)) < 0)
   {
     fprintf (stderr, "Unable to change LED trigger: %s\n", strerror (errno)) ;
     return 1 ;

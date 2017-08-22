@@ -67,8 +67,8 @@ int main (void)
 
   printf ("\nNative wiringPi method: (%8d iterations)\n", FAST_COUNT) ;
   wiringPiSetup () ;
-  pinMode (0, OUTPUT) ;
-  speedTest (0, FAST_COUNT) ;
+  pinMode (7, OUTPUT) ;
+  speedTest (7, FAST_COUNT) ;
 
 // GPIO
 
@@ -81,8 +81,8 @@ int main (void)
 
   printf ("\nPhysical pin GPIO method: (%8d iterations)\n", FAST_COUNT) ;
   wiringPiSetupPhys () ;
-  pinMode (11, OUTPUT) ;
-  speedTest (11, FAST_COUNT) ;
+  pinMode (7, OUTPUT) ;
+  speedTest (7, FAST_COUNT) ;
 
 // Switch to SYS mode:
 

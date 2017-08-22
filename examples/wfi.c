@@ -4,7 +4,7 @@
  *
  *	This program demonstrates the use of the waitForInterrupt()
  *	function in wiringPi. It listens to a button input on
- *	BCM_GPIO pin 17 (wiringPi pin 0)
+ *	BCM_GPIO pin 17 (wiringPi pin 7)
  *
  *	The biggest issue with this method is that it really only works
  *	well in Sys mode.

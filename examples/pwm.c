@@ -33,24 +33,20 @@ int main (void)
   int bright ;
 
   printf ("Raspberry Pi wiringPi PWM test program\n") ;
-
-  if (wiringPiSetup () == -1)
-    exit (1) ;
-
-  pinMode (1, PWM_OUTPUT) ;
-
+  wiringPiSetup();
+  pinMode (26, PWM_OUTPUT) ;
   for (;;)
   {
-    for (bright = 0 ; bright < 1024 ; ++bright)
+    for (bright = 0 ; bright < 1024 ; bright=bright+4)
     {
-      pwmWrite (1, bright) ;
-      delay (1) ;
+      pwmWrite (26, bright) ;
+      delay (10) ;
     }
 
-    for (bright = 1023 ; bright >= 0 ; --bright)
+    for (bright = 1023 ; bright >= 0 ; bright=bright-4)
     {
-      pwmWrite (1, bright) ;
-      delay (1) ;
+      pwmWrite (26, bright) ;
+      delay (10) ;
     }
   }
 

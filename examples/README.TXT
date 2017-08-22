@@ -16,3 +16,15 @@ To really compile everything:
 
 The individual tests are:
 
+blink:			
+blink8:			
+blink12:		
+speed:			
+lcd:				
+wfi:				
+isr:				
+isr-osc:			
+pwm:			
+softPwm:		
+delayTest:		
+okLed:

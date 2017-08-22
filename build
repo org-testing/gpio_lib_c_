@@ -43,7 +43,7 @@ check_make_ok() {
   fi
 }
 
-sudo=${WIRINGPI_SUDO-sudo}
+#sudo=${WIRINGPI_SUDO-sudo}
 
 if [ x$1 = "xclean" ]; then
   cd wiringPi
@@ -124,14 +124,26 @@ fi
   echo "WiringPi Library"
   cd wiringPi
   $sudo make uninstall
-  if [ x$1 = "xstatic" ]; then
-    make -j5 static
-    check_make_ok
-    $sudo make install-static
+  if [ x$hardware = "xRockchip" ]; then
+    if [ x$1 = "xstatic" ]; then
+	  make -j5 static DEFS='-D_GNU_SOURCE -DTINKER_BOARD'
+      check_make_ok
+      $sudo make install-static DEFS='-D_GNU_SOURCE -DTINKER_BOARD'
+    else
+      make -j5 DEFS='-D_GNU_SOURCE -DTINKER_BOARD'
+      check_make_ok
+      $sudo make install DEFS='-D_GNU_SOURCE -DTINKER_BOARD'
+    fi
   else
-    make -j5
-    check_make_ok
-    $sudo make install
+	if [ x$1 = "xstatic" ]; then
+	  make -j5 static
+      check_make_ok
+      $sudo make install-static
+    else
+      make -j5
+      check_make_ok
+      $sudo make install
+    fi
   fi
   check_make_ok
 
@@ -153,9 +165,15 @@ fi
   echo
   echo "GPIO Utility"
   cd ../gpio
-  make -j5
-  check_make_ok
-  $sudo make install
+  if [ x$hardware = "xRockchip" ]; then
+    make -j5 DEFS='-D_GNU_SOURCE -DTINKER_BOARD'
+    check_make_ok
+    $sudo make install DEFS='-D_GNU_SOURCE -DTINKER_BOARD'
+  else
+    make -j5
+    check_make_ok
+    $sudo make install
+  fi
   check_make_ok
 
 # echo

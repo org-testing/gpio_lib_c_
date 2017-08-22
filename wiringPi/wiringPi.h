@@ -26,6 +26,10 @@
 
 // Handy defines
 
+
+
+
+
 // wiringPi modes
 
 #define	WPI_MODE_PINS		 0
@@ -79,16 +83,23 @@
 #define	PI_MODEL_07		7
 #define	PI_MODEL_08		8
 #define	PI_MODEL_ZERO		9
+#define PI_MODEL_TB		10
 
 #define	PI_VERSION_1		0
 #define	PI_VERSION_1_1		1
 #define	PI_VERSION_1_2		2
 #define	PI_VERSION_2		3
 
+#define ASUSVER	4
+
 #define	PI_MAKER_SONY		0
 #define	PI_MAKER_EGOMAN		1
 #define	PI_MAKER_MBEST		2
 #define	PI_MAKER_UNKNOWN	3
+#define PI_MAKER_ASUS		4
+
+
+
 
 extern const char *piModelNames    [16] ;
 extern const char *piRevisionNames [16] ;
@@ -181,13 +192,14 @@ extern int  wiringPiSetupPiFace (void) ;
 extern int  wiringPiSetupPiFaceForGpioProg (void) ;	// Don't use this - for gpio program only
 
 // On-Board Raspberry Pi hardware specific stuff
-
+extern int  piGpioLayout        (void) ;
 extern int  piBoardRev          (void) ;
 extern void piBoardId           (int *model, int *rev, int *mem, int *maker, int *overVolted) ;
 extern int  wpiPinToGpio        (int wpiPin) ;
 extern int  physPinToGpio       (int physPin) ;
 extern void setPadDrive         (int group, int value) ;
 extern int  getAlt              (int pin) ;
+extern int  getPinMode          (int pin) ;
 extern void pwmToneWrite        (int pin, int freq) ;
 extern void digitalWriteByte    (int value) ;
 extern void pwmSetMode          (int mode) ;

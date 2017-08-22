@@ -221,7 +221,7 @@ int wiringPiI2CSetup (const int devId)
   int rev ;
   const char *device ;
 
-  rev = piBoardRev () ;
+  rev = piGpioLayout () ;
 
   if (rev == 1)
     device = "/dev/i2c-0" ;
@@ -230,3 +230,21 @@ int wiringPiI2CSetup (const int devId)
 
   return wiringPiI2CSetupInterface (device, devId) ;
 }
+
+int MiarmI2CSetup (const int i2cid,const int devId)
+{
+  const char *device ;
+  if (i2cid == 1)
+    device = "/dev/i2c-1" ;
+  else if(i2cid == 4)
+    device = "/dev/i2c-4" ;
+  else
+  {
+	printf("Only i2c-1 and i2c-4 can be used\n");
+	printf("MiniarmI2CSetup(<1|4>,devId)\n");
+	return -1;
+  }
+
+  return wiringPiI2CSetupInterface (device, devId) ;
+}
+
